@@ -10,3 +10,10 @@ nbstripout~=0.4
 pytest-cov~=3.0
 pytest-mock>=1.7.1, <2.0
 pytest~=6.2
+kedro[pandas.CSVDataSet, pandas.ExcelDataSet, pandas.ParquetDataSet]==0.18.3   # Specify optional Kedro dependencies
+kedro-viz~=5.0                                                                 # Visualise your pipelines
+scikit-learn~=1.0                                                              # For modelling in the data science pipeline
+torch==1.13.1
+#kedro-mlflow>=0.11.0, <0.12
+#mlflow==1.26.1
+matplotlib>=3.5.0,<3.6.0
