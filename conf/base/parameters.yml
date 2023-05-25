@@ -1,3 +1,20 @@
 train_fraction: 0.8
 random_state: 3
 target_column: species
+
+size: (64,64)
+train_dir: ""
+test_dir: ""
+batch_size: 32
+num_workers: 0
+data_url: "https://github.com/mrdbourke/pytorch-deep-learning/raw/main/data/pizza_steak_sushi.zip")
+storage_path: "data/01_raw"
+
+training_loop_parameters:
+  learning_rate: 0.001
+  epochs: 5
+
+model_parameters:
+  input_dim: 3
+  hidden_dim: 128
+  output_dim: 3

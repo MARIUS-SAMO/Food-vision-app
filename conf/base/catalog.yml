@@ -45,3 +45,25 @@
 example_iris_data:
   type: pandas.CSVDataSet
   filepath: data/01_raw/iris.csv
+
+#### TRAINING
+
+train_transform:
+  type: pickle.PickleDataSet
+  filepath: data/06_models/train_transform.pkl
+
+test_transform:
+  type: pickle.PickleDataSet
+  filepath: data/06_models/test_transform.pkl
+
+id_to_class:
+  type: pickle.PickleDataSet
+  filepath: data/06_models/id_to_class.pkl
+
+pt_model:
+  type: pickle.PickleDataSet
+  filepath: data/06_models/pt_model.pkl
+
+device:
+  type: pickle.PickleDataSet
+  filepath: data/06_models/device.pkl
