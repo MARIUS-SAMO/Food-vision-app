@@ -7,8 +7,6 @@ train_dir: ""
 test_dir: ""
 batch_size: 32
 num_workers: 0
-data_url: "https://github.com/mrdbourke/pytorch-deep-learning/raw/main/data/pizza_steak_sushi.zip")
-storage_path: "data/01_raw"
 
 training_loop_parameters:
   learning_rate: 0.001

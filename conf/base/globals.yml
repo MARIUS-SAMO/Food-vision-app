@@ -1,2 +1,4 @@
-data_url:
-storage_path:
+data_url: "https://github.com/mrdbourke/pytorch-deep-learning/raw/main/data/pizza_steak_sushi.zip")
+storage_path: "data/01_raw"
+train_dir:
+test_dir:
