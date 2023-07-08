@@ -10,39 +10,6 @@ from typing import Tuple, List
 from tqdm.auto import tqdm
 
 
-def build_loss_and_optimizer(model: nn.Module, learning_rate: float) -> Tuple[nn.Module, Optimizer]:
-    """
-    Builds the loss function and optimizer for a given model.
-
-    Args:
-        model: The neural network model.
-        learning_rate: The learning rate for the optimizer.
-
-    Returns:
-        loss_fn: The loss function used for training.
-        optimizer: The optimizer used for updating the model's parameters.
-    """
-    loss_fn = nn.CrossEntropyLoss()
-    optimizer = torch.optim.Adam(
-        params=model.parameters(),
-        lr=learning_rate
-    )
-
-    return loss_fn, optimizer
-
-
-def get_device() -> str:
-    """
-    Determines and returns the device (GPU or CPU) available for computation.
-
-    Returns:
-        device: A string indicating the device available for computation ("cuda" or "cpu").
-    """
-    device = "cuda" if torch.cuda.is_available() else "cpu"
-
-    return device
-
-
 def train_step(model: torch.nn.Module,
                dataloader: torch.utils.data.DataLoader,
                loss_fn: torch.nn.Module,
@@ -159,10 +126,9 @@ def test_step(model: torch.nn.Module,
 def train(model: nn.Module,
           train_dataloader: DataLoader,
           test_dataloader: DataLoader,
-          optimizer: optim.Optimizer,
+          optimizer_kwargs: optim.Optimizer,
           loss_fn: nn.Module,
-          epochs: int,
-          device: torch.device) -> Tuple[nn.Module, List[float], List[float], List[float], List[float]]:
+          epochs: int) -> Tuple[nn.Module, List[float], List[float], List[float], List[float]]:
     """
     Trains and tests a PyTorch model.
 
@@ -198,6 +164,16 @@ def train(model: nn.Module,
             test_acc: [0.3400, 0.2973]
         )
     """
+
+    # build_loss_and_optimizer
+
+    loss_fn = nn.CrossEntropyLoss()
+    optimizer = torch.optim.Adam(
+        params=model.parameters(),
+        **optimizer_kwargs
+    )
+    device = torch.device("cuada") is torch.cuda.is_available() else 'cpu'
+
     # Create empty results dictionary
     results = {"train_loss": [],
                "train_acc": [],
@@ -236,9 +212,5 @@ def train(model: nn.Module,
 
     # Return the filled results at the end of the epochs
     return (
-        model,
-        results["train_loss"],
-        results["train_acc"],
-        results["test_loss"],
-        results["test_acc"]
+        model
     )
