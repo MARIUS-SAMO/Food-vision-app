@@ -127,7 +127,6 @@ def train(model: nn.Module,
           train_dataloader: DataLoader,
           test_dataloader: DataLoader,
           optimizer_kwargs: optim.Optimizer,
-          loss_fn: nn.Module,
           epochs: int) -> Tuple[nn.Module, List[float], List[float], List[float], List[float]]:
     """
     Trains and tests a PyTorch model.
@@ -172,7 +171,11 @@ def train(model: nn.Module,
         params=model.parameters(),
         **optimizer_kwargs
     )
-    device = torch.device("cuada") is torch.cuda.is_available() else 'cpu'
+
+    if torch.cuda.is_available():
+        device = torch.device("cuda")
+    else:
+        device = "cpu"
 
     # Create empty results dictionary
     results = {"train_loss": [],
