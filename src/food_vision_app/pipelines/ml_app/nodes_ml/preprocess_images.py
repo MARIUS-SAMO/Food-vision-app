@@ -2,7 +2,7 @@ from torchvision import transforms
 from typing import Tuple
 
 
-def create_transform_img_train(size: Tuple[int, int]) -> transforms.Compose:
+def create_img_train_transform(size: Tuple[int, int]) -> transforms.Compose:
     """
     Creates a data transformation pipeline for training images.
 
@@ -21,7 +21,7 @@ def create_transform_img_train(size: Tuple[int, int]) -> transforms.Compose:
     return data_transform
 
 
-def create_transform_img_test(size: Tuple[int, int]) -> transforms.Compose:
+def create_img_test_transform(size: Tuple[int, int]) -> transforms.Compose:
     """
     Creates a data transformation pipeline for the testing images 
 
