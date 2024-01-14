@@ -4,8 +4,6 @@ from .nodes_ml.data_setup import create_dataloaders
 from .nodes_ml.model import build_model
 from .nodes_ml.train_model import train
 
-import re
-
 
 def create_ml_pipeline(**kwargs):
     pipeline_create_dataloaders = Pipeline(
