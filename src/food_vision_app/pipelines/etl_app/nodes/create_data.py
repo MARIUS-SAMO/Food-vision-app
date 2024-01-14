@@ -8,6 +8,8 @@ import requests
 
 def get_data(data_url: str, storage_path: str):
     # Setup path to data folder
+    print(data_url)
+
     data_path = Path(storage_path)
     image_path = data_path / "pizza_steak_sushi"
 

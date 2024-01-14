@@ -7,7 +7,7 @@ def create_etl_pipeline(**kwargs):
         [
             node(
                 func=get_data,
-                inputs=["data_url", "storage_path"],
+                inputs=["params:data_url", "params:storage_path"],
                 outputs=None
             )
         ]
